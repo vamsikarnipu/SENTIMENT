@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            color: #0072ff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #0072ff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #00c6ff;
+        }
+
+        input[type="submit"] {
+            background-color: #0072ff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00c6ff;
+        }
+
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #0072ff;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Sentiment Analysis</h1>
+        <form action="/predict" method="POST">
+            <label for="comment">Enter your comment to classify:</label>
+            <input type="text" id="comment" name="comment" placeholder="Type your tweet here..." required>
+            <input type="submit" value="Submit">
+        </form>
+        {% if prediction %}
+            <div class="result">
+                <strong>Sentiment: </strong>{{ prediction }}
+            </div>
+        {% endif %}
+        <div class="footer">
+            <p>Powered by Flask & TensorFlow | © 2024</p>
+        </div>
+    </div>
+</body>
+</html>
